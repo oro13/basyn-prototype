@@ -78,3 +78,39 @@ type Mutation {
 }
 
 ```
+
+### REA Translation
+
+## Basyn / Holo-REA Hackalong  Proposed Test Activity
+
+Data setup (use graphiql):
+    Agents: Bob the bio-digester and Carol the farmer
+    Units: gallon, one (?)
+    ResourceSpecifications: 
+        Liquid fertilizer
+        defaultUnitOfResource: gallon
+        Dollar 
+        defaultUnitOfResource: one
+    
+0. Put beginning balances into Bob's and Carol's bank accounts.  Query the bank balances.
+For each, use a `raise` EconomicEvent, resourceQuantity: $10,000, resourceConformsTo: Dollar, provider and receiver: Bob and Carol respectively, hasPointInTime: current or in the past; create a resource: resource.name: "Bob's (Carol's) bank account", resource.trackingIdentifier: a bank account number, primaryAccountable: Bob or Carol.
+
+1. Bob the bio-digester produces 5000 gallons liquid fertilizer, lot 123.  Query Bob's inventory.
+EconomicEvent: action: produce, provider and receiver: Bob, resourceQuantity: 5000 gallons, hasPointInTime: now, resourceConformsTo: Liquid fertilizer, inScopeOf: Bob (?), create resource: trackingIdentifier: 123, primaryAccountable: Bob
+
+[Possibly, we could put together a simple screen that creates EconomicEvents of any type for 0. and 1.?  And maybe 3.?]
+
+2. Carol the farmer orders 1000 gallons liquid fertilizer.
+Agreement: created: now
+Commitment: action: transfer, resourceConformsTo: liquid fertilizer, resourceQuantity: 1000 gallons, due: tomorrow, clauseOf: the agreement, provider: Bob, receiver: Carol
+Commitment: action: transfer, resourceConformsTo: dollar, resourceQuantity: 3260, due: in 10 days,  clauseOf: the agreement, provider: Carol, receiver: Bob
+
+3. Bob delivers 1000 gallons liquid fertilizer to Carol, lot 123.  Query Bob's inventory.
+EconomicEvent: action: transfer, resourceQuantity: 1000 gallons, resourceInventoriedAs: lot 123 liquid fert, hasPointInTime: now, provider: Bob, receiver: Carol
+Fulfillment: resourceQuantity: 1000 gallons, fulfills: the commitment, fulfilledBy: the event
+
+4. Carol pays Bob $3260 for the fertilizer.   Query the bank balances.
+EconomicEvent: action: transfer, resourceQuantity: 3260, resourceInventoriedAs: Carol's bank account, hasPointInTime: now, provider: Carol, receiver: Bob
+Fulfillment: resourceQuantity 3260, fulfills: the commitment, fulfilledBy: the event
+
+
