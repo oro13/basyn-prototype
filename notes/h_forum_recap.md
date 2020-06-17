@@ -62,7 +62,7 @@ or an invoicing system would just need separate, reciprocal transfers (biofertil
 an exchange is an 'agreement' in valueflows, showing a consume or a transfer event of biofertilizer and a reciprocal commitmeent of currency owed
 
 
-**popi proposes a hackalong of working through the record types to model the flows of resources and data planning
+**popi proposes a hackalong of working through the record types to model the flows of resources and data planning**
 
 - separate the marketplace network from the business operation
 - cast Carol's `Intent `to purchase biofertilizer and `Proposal` to pay
@@ -77,9 +77,9 @@ TODO What use-case specific business intelligence does Vashon Bioenergy need to 
 
 e.g. auditing requirements, 'wishlist' features like stats and impact (landfill aversion, carbon sequestration, soil nutrition benefits)
 
-**the question of how many networks/dnas are we dealing with, including a 'group agent' for operations and an app for marketplace members, data would have to be linked between these  DHTs (distributed hash tables, the holochain app's database/ledger)
+**the question of how many networks/dnas are we dealing with, including a 'group agent' for operations and an app for marketplace members, data would have to be linked between these  DHTs (distributed hash tables, the holochain app's database/ledger)**
 
-**TODO do we have the need for an open/regional marketplace to look for matches in providers and receivers?
+**TODO do we have the need for an open/regional marketplace to look for matches in providers and receivers?**
 
 How to work towards UI?
 
