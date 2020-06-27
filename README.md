@@ -10,6 +10,9 @@ dev resources:
 
 https://holochain-open-dev.github.io/blog/graphql-holochain/
 
+Lynn's Outline
+
+https://pad.disroot.org/p/sPrf2Rbv33Hp-EfkhyVn
 
 ---
 
