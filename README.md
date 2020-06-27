@@ -10,6 +10,27 @@ dev resources:
 
 https://holochain-open-dev.github.io/blog/graphql-holochain/
 
+
+---
+
+notes from pospi:
+
+```
+let me know how you get on with create-react-app and integrating Apollo with it? 
+https://www.apollographql.com/docs/react/get-started/
+
+I think you probably don't want apollo-boost but to use apollo-client directly. You won't be needing the HTTP link, Holo-REA's resolvers connect via https://www.apollographql.com/docs/link/links/schema/ instead
+ 
+ ```
+```
+There might be a priority of events here though as I haven't published the latest changes to NPM for you yet. So maybe we can do the Agreement code review to start, then I can tag a new release of https://www.npmjs.com/package/@valueflows/vf-graphql-holochain for you
+
+```
+
+
+```
+I started a fresh repo today if you're interested in a clean slate. It won't be until tomorrow when I start adding CommonsPub-specific things to it https://git.zo.team/pospi/valueflows-react-app
+ ```
 ---
 
 # basyn-prototype
