@@ -7,6 +7,20 @@ import ModalScreen from './ModalScreen.js';
 import StartScreen from './StartScreen.js';
 import DataSheet_localizationSheet from './DataSheet_localizationSheet.js';
 
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { SchemaLink } from 'apollo-link-schema';
+
+//import schema from './path/to/your/schema';
+
+
+const graphqlClient = new ApolloClient({
+  ssrMode: true,
+  cache: new InMemoryCache(),
+  link: new SchemaLink({ schema })
+});
+
+//const schema =
 
 class App extends Component {
   constructor(props) {
