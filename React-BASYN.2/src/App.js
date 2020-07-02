@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ApolloProvider } from '@apollo/react-hooks';
 import LocalizedStrings from 'react-localization';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import * as util from 'util';
@@ -7,6 +8,7 @@ import ModalScreen from './ModalScreen.js';
 import StartScreen from './StartScreen.js';
 import DataSheet_localizationSheet from './DataSheet_localizationSheet.js';
 
+import initGraphqlClient from './graphqlClient';
 
 class App extends Component {
   constructor(props) {
@@ -22,9 +24,14 @@ class App extends Component {
     this.updateLocalizationFromDataSheet(this.dataSheets['localizationSheet']);
 
     this.state = {
+      client: null,
+      error: null,
       screenTransitionForward: true,
     }
 
+    initGraphqlClient()
+      .then((client) => this.setState({ client }))
+      .catch((error) => this.setState({ client: null, error }))
   }
 
   windowDidResize = () => {
@@ -136,24 +143,34 @@ class App extends Component {
         default:
           return null;
         case 'modal':
-          return (<ModalScreen {...screenProps} />)
+          return (
+              <ModalScreen {...screenProps} />
+          )
         case 'start':
           return (<StartScreen {...screenProps} />)
       }
     }
 
+    if (!this.state.client) {
+      return (
+        <div>Error loading Holochain connection</div>
+      )
+    }
+
     return (
-      <div className="App">
-        <Switch>
-          <Route path="/" render={(props) => makeElementForScreen('start', props.location.state, true, true)} exact />
-          <Route path="/modal" render={(props) => {
-            return makeElementForScreen('modal', props.location.state, true, true);
-          }} />
-          <Route path="/start" render={(props) => {
-            return makeElementForScreen('start', props.location.state, true, true);
-          }} />
-        </Switch>
-      </div>
+      <ApolloProvider client={this.state.client}>
+        <div className="App">
+          <Switch>
+            <Route path="/" render={(props) => makeElementForScreen('start', props.location.state, true, true)} exact />
+            <Route path="/modal" render={(props) => {
+              return makeElementForScreen('modal', props.location.state, true, true);
+            }} />
+            <Route path="/start" render={(props) => {
+              return makeElementForScreen('start', props.location.state, true, true);
+            }} />
+          </Switch>
+        </div>
+      </ApolloProvider>
     );
   }
 }
