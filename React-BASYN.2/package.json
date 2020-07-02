@@ -3,12 +3,18 @@
   "version": "0.1.1",
   "private": true,
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.5",
+    "@valueflows/vf-graphql-holochain": "0.0.1-alpha.2",
+    "apollo-cache-inmemory": "^1.6.6",
+    "apollo-client": "^2.6.10",
+    "apollo-link-schema": "^1.2.5",
+    "graphql-tag": "^2.10.3",
+    "muicss": "^0.9.41",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-localization": "^1.0.13",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "2.1.8",
-    "muicss": "^0.9.41"
+    "react-scripts": "2.1.8"
   },
   "scripts": {
     "start": "PORT=3000 react-scripts start",
