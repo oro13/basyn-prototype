@@ -12,6 +12,8 @@ import PayBill from './PayBill';
 // UI framework component imports
 import Container from 'muicss/lib/react/container';
 
+import QueryTest from './eventQueryTest';
+
 export default class StartScreen extends Component {
 
   // Properties used by this component:
@@ -19,7 +21,7 @@ export default class StartScreen extends Component {
 
   constructor(props) {
     super(props);
-    
+
     this.state = {
     };
   }
@@ -36,10 +38,10 @@ export default class StartScreen extends Component {
   onClick_elPayBill = (ev) => {
     // Go to screen 'Modal'
     this.props.appActions.goToScreen('modal', { transitionId: 'fadeIn' });
-  
+
   }
-  
-  
+
+
   render() {
     let layoutFlowStyle = {};
     let baseStyle = {};
@@ -50,7 +52,7 @@ export default class StartScreen extends Component {
       layoutFlowStyle.height = '100vh';
       layoutFlowStyle.overflow = 'hidden';
     }
-    
+
     const style_elBackground = {
       width: '100%',
       height: '100%',
@@ -58,11 +60,11 @@ export default class StartScreen extends Component {
     const style_elBackground_outer = {
       backgroundColor: 'white',
      };
-    
+
     const style_elBackdrop = {
       background: 'rgba(43, 47, 51, 0.050)',
      };
-    
+
     const style_elBase = {
       background: 'rgba(255, 255, 255, 1.000)',
      };
@@ -71,7 +73,7 @@ export default class StartScreen extends Component {
       color: '#a3a3a3',
       textAlign: 'left',
      };
-    
+
     const style_elMask = {
       backgroundImage: 'url('+img_elMask+')',
       backgroundSize: '100% 100%',
@@ -82,24 +84,24 @@ export default class StartScreen extends Component {
       backgroundPosition: '50% 50%',
       backgroundSize: 'cover',
      };
-    
+
     const style_elBar = {
       background: 'rgba(43, 47, 51, 0.100)',
      };
-    
+
     const style_elBar2 = {
       background: 'rgba(43, 47, 51, 0.100)',
      };
-    
+
     const style_elFrame = {
       background: 'transparent',
      };
-    
+
     const style_elFill = {
       backgroundImage: 'url('+img_elFill+')',
       backgroundSize: '100% 100%',
      };
-    
+
     const style_elBg = {
       backgroundImage: 'url('+img_elBg+')',
       backgroundSize: '100% 100%',
@@ -109,7 +111,7 @@ export default class StartScreen extends Component {
       color: 'white',
       textAlign: 'center',
      };
-    
+
     const style_elShape = {
       backgroundImage: 'url('+img_elShape+')',
       backgroundSize: '100% 100%',
@@ -119,12 +121,12 @@ export default class StartScreen extends Component {
       color: '#7ed320',
       textAlign: 'left',
      };
-    
+
     const style_elTriangle1Copy = {
       backgroundImage: 'url('+img_elTriangle1Copy+')',
       backgroundSize: '100% 100%',
      };
-    
+
     const style_elRectangle = {
       background: 'transparent',
      };
@@ -132,14 +134,14 @@ export default class StartScreen extends Component {
       cursor: 'pointer',
       pointerEvents: 'auto',
      };
-    
+
     return (
       <Container fluid={true} className="AppScreen StartScreen" style={baseStyle}>
         <div className="background">
           <div className="containerMinHeight elBackground" style={style_elBackground_outer}>
             <div style={style_elBackground} />
           </div>
-          
+
           <div className="elBackdrop" style={style_elBackdrop} />
           <div className="elBase" style={style_elBase} />
           <div className="font-robotoRegular  elCarolBiggs" style={style_elCarolBiggs}>
@@ -159,10 +161,11 @@ export default class StartScreen extends Component {
           <div className="font-montserratMedium  elBASYN" style={style_elBASYN}>
             <div>{this.props.locStrings.start_basyn_943878}</div>
           </div>
+          <QueryTest />
           <div className="elTriangle1Copy" style={style_elTriangle1Copy} />
           <div className="elRectangle" style={style_elRectangle} />
         </div>
-        
+
         <div className="screenFgContainer">
           <div className="foreground">
             <div className="hasNestedComps elCardInvoice">
@@ -176,5 +179,5 @@ export default class StartScreen extends Component {
       </Container>
     )
   }
-  
+
 }
